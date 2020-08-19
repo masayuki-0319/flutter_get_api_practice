@@ -6,7 +6,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  String appBarTitle = 'Flutter Demo';
+  static const String appBarTitle = 'Flutter Demo';
   int _counter = 0;
 
   void _incrementCounter() {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rta_seacher_for_speedrun_com/ui/pages/home_screen.dart';
+import 'ui/pages.dart';
 
 void main() => runApp(MyApp());
 
