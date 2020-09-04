@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 class SectionContainer extends StatelessWidget {
   const SectionContainer(
-      {Key key, @required this.child, @required this.sectionTitle})
+      {Key key, @required this.sectionList, @required this.sectionTitle})
       : super(key: key);
 
-  final Widget child;
+  final Widget sectionList;
   final String sectionTitle;
 
   @override
@@ -32,7 +32,7 @@ class SectionContainer extends StatelessWidget {
           const SizedBox(
             height: 13,
           ),
-          child,
+          sectionList,
         ],
       ),
     );

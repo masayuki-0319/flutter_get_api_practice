@@ -5,14 +5,12 @@ import 'package:http/http.dart' as http;
 import '../models/series.dart';
 
 class SeriesList {
-  final path = 'series';
-
-  Uri seriesUri() {
-    return Uri.https('www.speedrun.com', '/api/v1/$path', { 'orderby': 'created' });
+  Uri _seriesListUri(Map<String, String> options) {
+    return Uri.https('www.speedrun.com', '/api/v1/series', options);
   }
 
   Future<List<Series>> getSeriesList() async {
-    final response = await http.get(seriesUri());
+    final response = await http.get(_seriesListUri({'orderby': 'created'}));
 
     if (response.statusCode == 200) {
       final jsonData = json.decode(response.body) as Map;

@@ -1,4 +1,5 @@
 // ref: https://github.com/speedruncomorg/api/blob/master/version1/series.md#get-series
+// MEMO: assets のメンバの取り扱い検討中
 class Series {
   Series({
     this.id,
@@ -27,8 +28,8 @@ class Series {
 
   factory Series.fromJson(Map<String, dynamic> json) {
     Map<String, dynamic> convertMap(String attr) {
-      final baseConvert = json['$attr'] as Map<String, dynamic>;
-      return Map<String, dynamic>.from(baseConvert);
+      final baseJson = json['$attr'] as Map<String, dynamic>;
+      return Map<String, dynamic>.from(baseJson);
     }
 
     return Series(
