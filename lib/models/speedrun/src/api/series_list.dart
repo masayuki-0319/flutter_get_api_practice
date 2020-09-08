@@ -1,16 +1,21 @@
 import 'dart:convert';
 
-import 'package:http/http.dart' as http;
-
 import '../models/series.dart';
+import './base.dart';
 
-class SeriesList {
-  Uri _seriesListUri(Map<String, String> options) {
-    return Uri.https('www.speedrun.com', '/api/v1/series', options);
+class SeriesList extends SpeedrunApiBase {
+  SeriesList({ this.options = defaultOptions });
+  final Map<String, String> options;
+
+  static const path = '/api/v1/series';
+  static const defaultOptions = { 'orderby': 'created' };
+
+  Uri _endpoint() {
+    return generateEndpoint(path, options);
   }
 
-  Future<List<Series>> getSeriesList() async {
-    final response = await http.get(_seriesListUri({'orderby': 'created'}));
+  Future<List<Series>> request() async {
+    final response = await getRequest(_endpoint());
 
     if (response.statusCode == 200) {
       final jsonData = json.decode(response.body) as Map;

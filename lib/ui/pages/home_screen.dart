@@ -16,8 +16,8 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    final _api = SeriesList();
-    seriesList = _api.getSeriesList();
+    final _getSeriesListApi = SeriesList();
+    seriesList = _getSeriesListApi.request();
   }
 
   @override
