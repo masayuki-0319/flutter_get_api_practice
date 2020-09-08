@@ -1,16 +1,17 @@
 import 'dart:convert';
 
 import '../models/series.dart';
-import './base.dart';
+import 'base.dart';
 
 class SeriesList extends SpeedrunApiBase {
   SeriesList({ this.options = defaultOptions });
   final Map<String, String> options;
 
-  static const path = '/api/v1/series';
   static const defaultOptions = { 'orderby': 'created' };
 
   Uri _endpoint() {
+    const path = '/api/v1/series';
+
     return generateEndpoint(path, options);
   }
 
