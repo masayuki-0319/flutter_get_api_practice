@@ -3,18 +3,15 @@ import 'dart:convert';
 import '../models/series.dart';
 import 'base.dart';
 
-class SeriesShow extends SpeedrunApiBase {
-  SeriesShow({ this.id });
-  final String id;
-
-  Uri _endpoint() {
+class SeriesDetail extends SpeedrunApiBase {
+  Uri _endpoint(String id) {
     final path = '/api/v1/series/$id';
 
     return generateEndpoint(path, null);
   }
 
-  Future<Series> request() async {
-    final response = await getRequest(_endpoint());
+  Future<Series> request(String id) async {
+    final response = await getRequest(_endpoint(id));
 
     if (response.statusCode == 200) {
       final jsonData = json.decode(response.body) as Map;
@@ -23,7 +20,7 @@ class SeriesShow extends SpeedrunApiBase {
 
       return Series.fromJson(mainData);
     } else {
-      print('Error: Failed to get seriesShow');
+      print('Error: Failed to get seriesDetail');
       return null;
     }
   }
