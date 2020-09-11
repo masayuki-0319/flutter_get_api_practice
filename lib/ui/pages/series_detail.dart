@@ -38,7 +38,10 @@ class _DetailsScreenState extends State<DetailsScreen> {
             return SingleChildScrollView(
               child: Column(
                 children: <Widget>[
-                  GameTitleImage(imgUrl: data.assets['coverLarge'] as String),
+                  GameTitleImage(
+                    imageUrl: data.assets['cover-large']['uri'] as String,
+                    title: data.nameInt,
+                  ),
                   _spaceBox(height: 11),
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -46,40 +49,9 @@ class _DetailsScreenState extends State<DetailsScreen> {
                       children: <Widget>[
                         Text(
                           data.nameInt,
-                          style: Theme.of(context).textTheme.headline1,
+                          style: Theme.of(context).textTheme.headline3,
                         ),
                         _spaceBox(height: 7),
-                        // RichText(
-                        //   text: TextSpan(
-                        //     children: List.generate(
-                        //       data.genre.length,
-                        //       (i) {
-                        //         return TextSpan(
-                        //             text:
-                        //                 '${data.genre[i]['name']} ');
-                        //       },
-                        //     ),
-                        //     style: Theme.of(context).textTheme.caption,
-                        //   ),
-                        // ),
-                        // _spaceBox(height: 9),
-                        // RatingBar(
-                        //   initialRating: data.rating,
-                        //   // initialRating: 3,
-                        //   direction: Axis.horizontal,
-                        //   allowHalfRating: true,
-                        //   itemCount: 10,
-                        //   // ignore: lines_longer_than_80_chars
-                        //   itemPadding: const EdgeInsets.symmetric(horizontal: 4),
-                        //   itemBuilder: (context, _) => const Icon(
-                        //     Icons.star,
-                        //     color: Colors.amber,
-                        //   ),
-                        //   itemSize: 25,
-                        //   onRatingUpdate: (rating) {
-                        //     print(rating);
-                        //   },
-                        // ),
                         _spaceBox(height: 13),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -91,7 +63,8 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                   style: Theme.of(context).textTheme.caption,
                                 ),
                                 Text(
-                                  '${DateTime.parse(data.created).year}',
+                                  'null',
+                                  // '${DateTime?.parse(data.created)?.year}',
                                   style: Theme.of(context).textTheme.subtitle1,
                                 ),
                               ],
@@ -124,7 +97,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                         ),
                         _spaceBox(height: 13),
                         Text(
-                          data.nameJap,
+                          data.nameInt,
                           textAlign: TextAlign.center,
                           style: Theme.of(context)
                               .textTheme

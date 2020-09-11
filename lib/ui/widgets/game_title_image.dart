@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 // import 'package:movie_db/ui/screens/screens.dart';
 
 class GameTitleImage extends StatelessWidget {
-  const GameTitleImage({Key key, @required this.imgUrl}) : super(key: key);
-  final String imgUrl;
+  const GameTitleImage({Key key, @required this.imageUrl, this.title})
+      : super(key: key);
+  final String imageUrl;
+  final String title;
 
   @override
   Widget build(BuildContext context) {
@@ -20,8 +22,8 @@ class GameTitleImage extends StatelessWidget {
             child: ClipPath(
               clipper: CustomClip(),
               child: Image.network(
-                imgUrl,
-                fit: BoxFit.cover,
+                imageUrl,
+                fit: BoxFit.contain,
               ),
             ),
           ),
@@ -40,10 +42,10 @@ class GameTitleImage extends StatelessWidget {
                     },
                   ),
                   Text(
-                    'Netflixy',
+                    title,
                     style: Theme.of(context)
                         .textTheme
-                        .headline1
+                        .headline4
                         .apply(color: Colors.white),
                   ),
                   IconButton(
@@ -57,49 +59,6 @@ class GameTitleImage extends StatelessWidget {
               ),
             ),
           ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: InkWell(
-              // onTap: () {
-              //   Navigator.pushNamed(context, VideoApp.route);
-              // },
-              child: Container(
-                decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.white,
-                  boxShadow: [
-                    BoxShadow(
-                        color: Colors.black45,
-                        blurRadius: 3,
-                        offset: Offset(0, 1)),
-                  ],
-                ),
-                padding: const EdgeInsets.all(15),
-                child: const Icon(
-                  Icons.play_arrow,
-                  color: Colors.red,
-                ),
-              ),
-            ),
-          ),
-          Positioned(
-            bottom: 0,
-            left: 5,
-            right: 5,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                IconButton(
-                  icon: const Icon(Icons.add),
-                  onPressed: () {},
-                ),
-                IconButton(
-                  icon: const Icon(Icons.share),
-                  onPressed: () {},
-                ),
-              ],
-            ),
-          )
         ],
       ),
     );
@@ -110,11 +69,10 @@ class CustomClip extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     return Path()
-        ..lineTo(0, size.height - 31)
-        ..quadraticBezierTo(
-            size.width / 2, size.height + 31, size.width, size.height - 31
-            )
-        ..lineTo(size.width, 0);
+      ..lineTo(0, size.height - 31)
+      ..quadraticBezierTo(
+          size.width / 2, size.height + 31, size.width, size.height - 31)
+      ..lineTo(size.width, 0);
   }
 
   @override
