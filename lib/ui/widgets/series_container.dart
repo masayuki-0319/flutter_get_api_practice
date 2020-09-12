@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../models/speedrun/speedrun.dart';
+import '../pages.dart';
 
 class SeriesContainer extends StatelessWidget {
   const SeriesContainer({
@@ -13,12 +14,12 @@ class SeriesContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // Navigator.push(
-        //   context,
-        //   MaterialPageRoute(
-        //     builder: (ctx) => DetailsScreen(id: snapshot.id),
-        //   ),
-        // );
+        Navigator.push(
+          context,
+          MaterialPageRoute<void>(
+            builder: (ctx) => DetailsScreen(id: snapshot.id),
+          ),
+        );
       },
       child: Container(
         width: MediaQuery.of(context).size.width / 2.5,
