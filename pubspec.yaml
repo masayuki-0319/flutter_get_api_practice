@@ -24,6 +24,8 @@ dependencies:
   flutter:
     sdk: flutter
   http: ^0.12.2
+  dart_speedrun_api:
+    path: ../dart-speedrun-api
 
 
   # The following adds the Cupertino Icons font to your application.

@@ -1,6 +1,6 @@
+import 'package:dart_speedrun_api/dart_speedrun_api.dart';
 import 'package:flutter/material.dart';
 
-import '../../models/speedrun/speedrun.dart';
 import '../widgets/homepage_featured_widget.dart';
 import '../widgets/section_container.dart';
 import '../widgets/series_container.dart';
@@ -16,8 +16,8 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    final _getSeriesListApi = SeriesList();
-    seriesList = _getSeriesListApi.request();
+    final _seriesApi = SeriesApi();
+    seriesList = _seriesApi.requestList();
   }
 
   @override

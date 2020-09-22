@@ -1,6 +1,5 @@
+import 'package:dart_speedrun_api/dart_speedrun_api.dart';
 import 'package:flutter/material.dart';
-import '../../models/speedrun/speedrun.dart';
-
 import '../widgets/game_title_image.dart';
 
 class DetailsScreen extends StatefulWidget {
@@ -12,13 +11,13 @@ class DetailsScreen extends StatefulWidget {
 }
 
 class _DetailsScreenState extends State<DetailsScreen> {
-  SeriesDetail _api;
+  SeriesApi _api;
   Future<Series> seriesDetail;
 
   @override
   void initState() {
-    _api = SeriesDetail();
-    seriesDetail = _api.request(widget.id);
+    _api = SeriesApi();
+    seriesDetail = _api.requestDetail(widget.id);
     super.initState();
   }
 
@@ -45,8 +44,8 @@ class _DetailsScreenState extends State<DetailsScreen> {
           child: Column(
             children: <Widget>[
               GameTitleImage(
-                imageUrl: data.assets['cover-large']['uri'] as String,
-                title: data.nameInt,
+                imageUrl: data.assets['cover-large'].uri,
+                title: data.names.international,
               ),
               _spaceBox(height: 11),
               Container(
@@ -54,7 +53,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 child: Column(
                   children: <Widget>[
                     Text(
-                      data.nameInt,
+                      data.names.international,
                       style: Theme.of(context).textTheme.headline3,
                     ),
                     _spaceBox(height: 7),
@@ -94,7 +93,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                               style: Theme.of(context).textTheme.caption,
                             ),
                             Text(
-                              data.webLink,
+                              data.weblink,
                               style: Theme.of(context).textTheme.subtitle1,
                             ),
                           ],

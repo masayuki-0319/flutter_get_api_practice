@@ -1,5 +1,5 @@
+import 'package:dart_speedrun_api/dart_speedrun_api.dart';
 import 'package:flutter/material.dart';
-import '../../models/speedrun/src/models/series.dart';
 
 class HomepageFeaturedWidget extends StatelessWidget {
   const HomepageFeaturedWidget({
@@ -32,7 +32,7 @@ class HomepageFeaturedWidget extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(15),
                   child: Image.network(
-                    data[id].assets['cover-large']['uri'] as String,
+                    data[id].assets['cover-large'].uri,
                     fit: BoxFit.contain,
                   ),
                 ),
@@ -51,7 +51,7 @@ class HomepageFeaturedWidget extends StatelessWidget {
                     color: Colors.black45,
                   ),
                   child: Text(
-                    data[id].nameInt,
+                    data[id].names.international,
                     style: const TextStyle(
                       color: Colors.white,
                       fontSize: 23,

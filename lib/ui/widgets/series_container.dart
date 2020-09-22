@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../models/speedrun/speedrun.dart';
+import 'package:dart_speedrun_api/dart_speedrun_api.dart';
 import '../pages.dart';
 
 class SeriesContainer extends StatelessWidget {
@@ -40,7 +40,7 @@ class SeriesContainer extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(15),
                 child: Image.network(
-                  snapshot.assets['cover-large']['uri'] as String,
+                  snapshot.assets['cover-large'].uri,
                   fit: BoxFit.contain,
                 ),
               ),
@@ -59,7 +59,7 @@ class SeriesContainer extends StatelessWidget {
                   color: Colors.black45,
                 ),
                 child: Text(
-                  snapshot.nameInt,
+                  snapshot.names.international,
                   style: const TextStyle(
                     color: Colors.white,
                     fontSize: 23,

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-// import 'package:movie_db/ui/screens/screens.dart';
 
 class GameTitleImage extends StatelessWidget {
   const GameTitleImage({Key key, @required this.imageUrl, this.title})
